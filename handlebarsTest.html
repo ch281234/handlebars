@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <!-- <script src="partials.hbs"></script> -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+    <!-- <script src="imdbApi.js"></script> -->
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+    </div>
+
+    <script id="handlebars-demo" type="text/x-handlebars-template">
+        <h2>    
+           {{> partials person}}
+        </h2>
+       
+    </script>
+
+
+
+
+    <script>
+        //  Handlebars.registerHelper('loud', function (a) {
+        //     return a.toUpperCase()
+        // })
+
+        //         Handlebars.registerHelper('loud', function () {
+        //     return this.firstname + ' ' + this.lastname
+        // })
+
+        // Handlebars.registerHelper("list", function (items, options) {
+        //     const itemsAsHtml = items.map(item => "<li>" + options.fn(item) + "</li>");
+        //     return "<ul>\n" + itemsAsHtml.join("\n") + "\n</ul>";
+        // });
+
+        // const handlebars = require('handlebars');
+
+        Handlebars.registerPartial(
+            "partials",
+            "{{person.name}} is {{person.age}} years old.\n"
+        )
+
+        var template = $("#handlebars-demo").html();
+
+        // var data ={
+        //   firstname: "Yehuda",
+        //   lastname: "Katz",
+        // };
+
+        // var data = {
+        //     person: {
+        //         firstname: "Yehuda",
+        //         lastname: "Katz",
+        //     },
+        // };
+
+        // var data = {
+        //     people: [
+        //         "Yehuda Katz",
+        //         "Alan Johnson",
+        //         "Charles Jolley",
+        //     ],
+        // };
+
+        // var data2 = {
+        //     people: [
+        //         {
+        //             firstname: "Nils",
+        //             lastname: "Knappmeier",
+        //         },
+        //         {
+        //             firstname: "Yehuda",
+        //             lastname: "Katz",
+        //         },
+        //     ],
+        // }
+
+        var data2 ={
+  person: [
+    { name: "Nils", age: 20 },
+    { name: "Teddy", age: 10 },
+    { name: "Nelson", age: 40 },
+  ],
+}
+
+
+
+        //Compile the template data into a function
+        var compileTemp = Handlebars.compile(template);
+
+        var html = compileTemp(data2);
+
+        $(".container").append(html);
+    </script>
+
+</body>
+
+</html>

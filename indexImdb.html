@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="indexImdb.js"></script>
+    
+   
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/th (4).jpg">
+
+    <title>Top 100 Movies</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="nav-logo">
+                <i class="fa-brands fa-imdb" style="color: #93912a;font-size: 57px; "></i>
+            </div>
+            <div class="nav-menu">
+                <i class="fa-solid fa-bars" style="color: #ffffff; font-size: 20px;cursor: pointer;" onclick="showMenu()"></i>
+                Menu
+            </div>
+            <div class="nav-search">
+                <select class="search-select">
+                    <option>All</option>
+                </select>
+                <input class="search-input" placeholder="Search IMDb">
+                <div class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="nav-imdbPro">
+             <img src="images/imdb-pro.jpg" alt="">
+            </div>
+            <div class="nav-watchlist">
+                <i class="fa-regular fa-bookmark" style="color: #ffffff; font-size: 20px;"></i>
+                Watchlist
+            </div>
+            <div class="nav-signIn">
+                Sign In
+            </div>
+            <div class="nav-lang">
+                EN
+                <i class="fa-solid fa-caret-down" style="color: #ffffff;"></i>
+            </div>
+
+        </div>
+        <div class="content-Container">
+            <div class="left-content">
+               
+                <img src="http://thedrawshop.com/wp-content/uploads/2013/08/game-of-thrones-season-4.jpg" alt="">
+            </div>
+            <div class="right-content"></div>
+          
+        </div>
+        <div class="menu-div animate__animated animate__slideInDown" style="display:none">
+            <div class="row">
+                <div class="menuDiv-icon">
+                    <i class="fa-brands fa-imdb" style="color: #f1f443;font-size: 76px;"></i>
+                </div>
+                <div>
+                    <i class="fa-solid fa-circle-xmark" style="color: #fbff24;font-size: 76px;cursor: pointer;" onclick="closeDiv()"></i>
+                </div>
+            </div>
+            <div style="position: relative;left: 336px;display: flex;right: 10px;
+            ">
+            <i class="fa-solid fa-clapperboard" style="color: #f1fe34;font-size: 33px;"></i>
+                <h1 style="color: #f1f443;    position: relative;
+                left: 10px; ">MOVIES</h1>
+            </div>
+            <div style="padding-top: 20px;
+            left: 336px;
+            position: relative;">
+                <a href="#" style="text-decoration: none;
+                color: white;" onclick="listShow()">Top 100 Movies</a>
+            </div>
+            
+            
+
+        </div>
+
+    <div class="menu-page" style="display: none;">
+           
+            <div class="navbar-menu">
+                <div class="nav-logo">
+                    <i class="fa-brands fa-imdb" style="color: #93912a;font-size: 57px; "></i>
+                </div>
+                <div class="nav-menu">
+                    <i class="fa-solid fa-bars" style="color: #ffffff; font-size: 20px;" onclick="showMenu()"></i>
+                    Menu
+                </div>
+                <div class="nav-search">
+                    <select class="search-select">
+                        <option>All</option>
+                    </select>
+                    <input class="search-input" placeholder="Search IMDb">
+                    <div class="search-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <div class="nav-imdbPro">
+                 <img src="images/imdb-pro.jpg" alt="">
+                </div>
+                <div class="nav-watchlist">
+                    <i class="fa-regular fa-bookmark" style="color: #ffffff; font-size: 20px;"></i>
+                    Watchlist
+                </div>
+                <div class="nav-signIn">
+                    Sign In
+                </div>
+                <div class="nav-lang">
+                    EN
+                    <i class="fa-solid fa-caret-down" style="color: #ffffff;"></i>
+                </div>
+            </div>
+            <div class="main">
+
+                <div class="list-Container">
+                </div> 
+            </div>
+           
+        
+            <!-- <table>
+                <thead>
+                    <th></th>
+                    <th>Rank & Title</th>
+                    <th>IMDb Rating</th>
+                    <th>Year</th>   
+                </thead>
+                <tbody></tbody>
+                </table> -->
+
+               
+
+              
+            
+            <script id="handlebars-demo" type="text/x-handlebars-template">
+
+                
+            
+                    <!-- My name is {{name}}. I am a {{occupation}}.	 -->
+
+                    {{#each this}}
+                    <div class="m-list">
+                        <div class="photo">
+                            <img src="{{thumbnail}}">
+                        </div>
+                        <div class="info">
+                            
+                            {{rank}} {{title}} {{rating}}  
+                            <i class="fa-solid fa-star-half-stroke" style="color: #fbff1f;"></i>
+                        </div>
+                        </div>
+                     
+
+                      
+                    
+                        <br>
+                    {{/each}}
+
+             
+               
+            </script>
+
+     
+    
+        
+    
+        
+    </div>
+       
+    </header>
+    
+</body>
+</html>
+
+
